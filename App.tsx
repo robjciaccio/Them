@@ -58,8 +58,8 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  // return <BottomNavBar />;
-  return <RegistrationScreen />;
+  return <BottomNavBar />;
+  // return <RegistrationScreen />;
 };
 
 const styles = StyleSheet.create({

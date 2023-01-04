@@ -1,12 +1,17 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {StyleSheet, Text, ScrollView} from 'react-native';
+import MessageBox from './MessageBox/MessagePreviewBox';
 
 const MessagesScreen = () => {
   return (
-    <SafeAreaView>
-      <Text>Messages Screen</Text>
-    </SafeAreaView>
+    <ScrollView>
+      <MessageBox />
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  MessageBoxContainer: {},
+});
 
 export default MessagesScreen;

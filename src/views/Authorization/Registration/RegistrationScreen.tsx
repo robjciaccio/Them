@@ -11,14 +11,19 @@ import {
 import AuthInputs from '../../../components/Input/AuthInputs';
 // import photot from '../../../assets/248_heart_Non_Binary_Flag.jpg'
 
-const signUpValues = ['Profile Name', 'Birthdate', 'other Data'];
+const signUpValues = ['UserName', 'Birthdate', 'other Data'];
+
+const loginValues = ['UserName', 'Password'];
 
 const RegistrationScreen = () => {
   const [displayName, setDisplayName] = useState<string | null>();
-  const [logIn, setLogIn] = useState<Boolean | null>(null);
+  const [logIn, setLogIn] = useState<Boolean>(true);
+  const values = logIn
+    ? ['UserName', 'Birthdate', 'other Data']
+    : ['UserName', 'Password'];
 
   const renderAuthFields = () => {
-    return signUpValues.map(name => (
+    return values.map(name => (
       <View style={{alignItems: 'center'}}>
         <AuthInputs
           name={name}
@@ -35,11 +40,18 @@ const RegistrationScreen = () => {
         style={styles.logo}
         resizeMode="cover"
         source={require('../../../../assets/regBack.jpg')}>
-        <View style={styles.signUpContainer}>
-          <Text style={styles.signUpText}>Sign Up</Text>
+        <View>
+          <View style={styles.signUpContainer}>
+            <Text style={styles.signUpText}>{logIn ? 'Sign Up' : 'Login'}</Text>
+          </View>
+          {renderAuthFields()}
+          <View style={styles.authSwitchButton}>
+            <Button
+              title={logIn ? 'or Login' : 'or Sign Up'}
+              onPress={() => setLogIn(!logIn)}
+            />
+          </View>
         </View>
-
-        {renderAuthFields()}
       </ImageBackground>
     </View>
   );
@@ -57,7 +69,10 @@ const styles = StyleSheet.create({
   },
   signUpContainer: {
     alignItems: 'center',
-    marginTop: -100,
+    marginTop: 150,
+  },
+  authSwitchButton: {
+    marginTop: '80%',
   },
   signUpText: {
     fontFamily: 'Noteworthy-Bold',
