@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../../types/NavigationTypes';
 
 interface Messages {
   profileName: string;
@@ -15,7 +17,9 @@ interface Messages {
   message: string;
 }
 
-const MessagesBox = () => {
+type Props = NativeStackScreenProps<RootStackParamList>;
+
+const MessagesPreviewBox = ({navigation, route}: Props) => {
   const [messages, setMessages] = useState<Messages[] | null>();
 
   useEffect(() => {
@@ -23,6 +27,7 @@ const MessagesBox = () => {
   }, []);
 
   useEffect(() => {}, [messages]);
+
   const getMessages = async () => {
     try {
       const response = await fetch(
@@ -36,7 +41,7 @@ const MessagesBox = () => {
       );
       const resData = await response.json();
       if (resData) {
-        console.log(resData.messages);
+        console.log(resData.messages[1].message.length);
         setMessages(resData.messages);
       }
     } catch (error) {
@@ -44,11 +49,16 @@ const MessagesBox = () => {
     }
   };
 
-  const displayMessages = () => {
+  //Make message preview a limit of 40 characters
+
+  const renderMessages = () => {
     if (messages) {
-      return messages.map(m => {
+      return messages.map((m, i) => {
         return (
-          <TouchableOpacity style={styles.container}>
+          <TouchableOpacity
+            style={styles.container}
+            key={i}
+            onPress={() => navigation.navigate('Message')}>
             <View style={styles.nameAndDate}>
               <View style={styles.profileNameBox}>
                 <Text style={styles.profileNameText}>{m.profileName}</Text>
@@ -65,7 +75,11 @@ const MessagesBox = () => {
                 />
               </View>
               <View style={styles.messageBox}>
-                <Text>{m.message}</Text>
+                <Text>
+                  {m.message.length > 40
+                    ? m.message.substring(0, 40) + '...'
+                    : m.message}
+                </Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -74,14 +88,20 @@ const MessagesBox = () => {
     }
   };
 
-  return messages ? displayMessages() : null;
+  return messages ? (
+    renderMessages()
+  ) : (
+    <View style={styles.noMessages}>
+      <Text style={styles.noMessagesText}>You need to make some friends</Text>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
     width: '100%',
     // borderWidth: 0.7,
-    borderBottomWidth: 0.7,
+    borderBottomWidth: 0.3,
     marginHorizontal: 5,
     height: 80,
     flex: 1,
@@ -89,6 +109,7 @@ const styles = StyleSheet.create({
   profileNameText: {
     fontWeight: '500',
     fontSize: 16,
+    paddingLeft: 5.5,
   },
   messageBox: {
     marginTop: 10,
@@ -105,6 +126,14 @@ const styles = StyleSheet.create({
     marginLeft: 50,
     paddingTop: 4,
   },
+  noMessages: {
+    flex: 1,
+    marginTop: 40,
+    alignItems: 'center',
+  },
+  noMessagesText: {
+    fontSize: 20,
+  },
   MessageBoxContainer: {
     flexDirection: 'row',
     marginTop: -8,
@@ -120,4 +149,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MessagesBox;
+export default MessagesPreviewBox;

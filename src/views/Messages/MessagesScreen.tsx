@@ -1,11 +1,15 @@
 import React from 'react';
 import {StyleSheet, Text, ScrollView} from 'react-native';
-import MessageBox from './MessageBox/MessagePreviewBox';
+import MessagePreviewBox from './MessagePreviewBox/MessagePreviewBox';
+import {RootStackParamList} from '../../types/NavigationTypes';
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-const MessagesScreen = () => {
+type Props = NativeStackScreenProps<RootStackParamList>;
+
+const MessagesScreen = ({navigation, route}: Props) => {
   return (
     <ScrollView>
-      <MessageBox />
+      <MessagePreviewBox navigation={navigation} route={route} />
     </ScrollView>
   );
 };

@@ -6,6 +6,7 @@ import Icon from 'react-native-ionicons';
 import HomeScreen from '../../views/Home/HomeScreen';
 import ProfileScreen from '../../views/Profile/ProfileScreen';
 import MessagesScreen from '../../views/Messages/MessagesScreen';
+import MessagesStack from '../MessagesStack/MessagesStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,8 +33,9 @@ const BottomNavBar = () => {
         />
         <Tab.Screen
           name="Messages"
-          component={MessagesScreen}
+          component={MessagesStack}
           options={{
+            headerShown: false,
             tabBarIcon: ({color, size}) => <Icon name="mail" color={color} />,
           }}
         />
