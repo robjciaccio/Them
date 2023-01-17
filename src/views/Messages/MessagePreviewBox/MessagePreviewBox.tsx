@@ -41,7 +41,6 @@ const MessagesPreviewBox = ({navigation, route}: Props) => {
       );
       const resData = await response.json();
       if (resData) {
-        console.log(resData.messages[1].message.length);
         setMessages(resData.messages);
       }
     } catch (error) {

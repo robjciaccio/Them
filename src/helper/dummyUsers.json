@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "profileName": "flower peddel",
+      "age": "31",
+      "Bio": "e plurabus unum words words woreds",
+      "oneLiner": "Checking Things Out",
+      "image": "/Users/robertciaccio/Them/assets/profileImages/ftm.png"
+    },
+    {
+      "id": 1,
+      "profileName": "chaotic bottom",
+      "age": "26",
+      "Bio": "e plurabus unum words words woreds",
+      "oneLiner": "Where are my beats",
+      "image": "/Users/robertciaccio/Them/assets/profileImages/Doug.png"
+    },
+    {
+      "id": 2,
+      "profileName": "Furry",
+      "age": "45",
+      "Bio": "e plurabus unum words words woreds",
+      "oneLiner": "Checking Things Out",
+      "image": "/Users/robertciaccio/Them/assets/profileImages/Furry.png"
+    },
+    {
+      "id": 3,
+      "profileName": "Rachael",
+      "age": "28",
+      "Bio": "e plurabus unum words words woreds",
+      "oneLiner": "Checking Things Out",
+      "image": "/Users/robertciaccio/Them/assets/profileImages/Jonny.png"
+    },
+    {
+      "id": 4,
+      "profileName": "3 👀",
+      "age": "22",
+      "Bio": "e plurabus unum words words woreds",
+      "oneLiner": "Checking Things Out",
+      "image": "/Users/robertciaccio/Them/assets/profileImages/powerpuff.png"
+    },
+    {
+      "id": 5,
+      "profileName": "sweet piggy",
+      "age": "31",
+      "Bio": "e plurabus unum words words woreds",
+      "oneLiner": "Checking Things Out",
+      "image": "/Users/robertciaccio/Them/assets/profileImages/Piggy.png"
+    }
+  ]
+}
