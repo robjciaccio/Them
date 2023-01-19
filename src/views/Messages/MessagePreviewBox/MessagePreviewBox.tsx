@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../../types/NavigationTypes';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../../types/NavigationTypes';
 
 interface Messages {
   profileName: string;
@@ -19,7 +19,7 @@ interface Messages {
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
-const MessagesPreviewBox = ({navigation, route}: Props) => {
+const MessagesPreviewBox = ({ navigation, route }: Props) => {
   const [messages, setMessages] = useState<Messages[] | null>();
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const MessagesPreviewBox = ({navigation, route}: Props) => {
             <View style={styles.MessageBoxContainer}>
               <View>
                 <Image
-                  source={{uri: m.profileImage}}
+                  source={{ uri: m.profileImage }}
                   style={styles.userImgPreview}
                 />
               </View>

@@ -1,39 +1,27 @@
-import React, {useEffect, useState} from 'react';
-import {SafeAreaView, Text, FlatList} from 'react-native';
+import React, { useEffect, useState, useContext } from 'react';
+import { SafeAreaView, View, Text, FlatList, Button } from 'react-native';
+import UserRenderItem from './UserRenderItem/UserRenderItem';
+import { Context } from '../../../Context';
 
-interface LocalUsers {
-  id: string;
-  profileName: string;
-  age: string;
-  Bio: string;
-  oneLiner: string;
-  image: string;
-}
+import { ContextType } from '../../types/UserTypes';
 
 const HomeScreen = () => {
-  const [localUsers, SetLocalUsers] = useState<LocalUsers[] | null>();
+  const { getLocalusers, localUsers } = useContext(Context);
 
   useEffect(() => {
     getLocalusers();
   }, []);
 
-  const getLocalusers = async () => {
-    const getUsers = await fetch(
-      '/Users/robertciaccio/Them/src/helper/dummyUsers.json',
-      {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-        },
-      },
-    );
-    const resData = await getUsers.json();
-    SetLocalUsers(resData.users);
-  };
-
   return (
-    <SafeAreaView>
-      <Text>Home Screen</Text>
+    <SafeAreaView
+      style={{ flex: 1, flexDirection: 'row', backgroundColor: 'purple' }}>
+      <View>
+        <FlatList
+          data={localUsers}
+          renderItem={UserRenderItem}
+          numColumns={3}
+        />
+      </View>
     </SafeAreaView>
   );
 };

@@ -1,5 +1,5 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {NavigationContainer} from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 
 import Icon from 'react-native-ionicons';
 // screens
@@ -15,20 +15,38 @@ const BottomNavBar = () => {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          tabBarActiveTintColor: '#e91e63',
+          tabBarActiveTintColor: 'aqua',
+          tabBarInactiveTintColor: 'white',
+          tabBarStyle: {
+            backgroundColor: 'purple',
+            shadowColor: 'transparent',
+            borderTopWidth: 0,
+          },
+          headerStyle: {
+            backgroundColor: 'purple',
+            shadowColor: 'transparent',
+          },
+          headerTitleStyle: {
+            color: 'white',
+            fontWeight: '600',
+          },
         }}>
         <Tab.Screen
           name="Home"
           component={HomeScreen}
           options={{
-            tabBarIcon: ({color, size}) => <Icon name="people" color={color} />,
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="people" color={color} />
+            ),
           }}
         />
         <Tab.Screen
           name="Profile"
           component={ProfileScreen}
           options={{
-            tabBarIcon: ({color, size}) => <Icon name="person" color={color} />,
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="person" color={color} />
+            ),
           }}
         />
         <Tab.Screen
@@ -36,7 +54,7 @@ const BottomNavBar = () => {
           component={MessagesStack}
           options={{
             headerShown: false,
-            tabBarIcon: ({color, size}) => <Icon name="mail" color={color} />,
+            tabBarIcon: ({ color, size }) => <Icon name="mail" color={color} />,
           }}
         />
       </Tab.Navigator>
