@@ -13,4 +13,5 @@ export type User = {
   Bio: string;
   oneLiner: string;
   image: string;
+  navigation?: undefined;
 };
